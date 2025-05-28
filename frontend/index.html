@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="ひらがな・カタカナを学ぶためのフラッシュカードアプリ">
+  <meta name="theme-color" content="#4F46E5">
+
+  <title>日本語フラッシュカード</title>
+
+  <!-- マニフェストファイル -->
+  <link rel="manifest" href="/manifest.json">
+
+  <!-- アイコン -->
+  <link rel="icon" href="/assets/icons/favicon.ico">
+  <link rel="apple-touch-icon" href="/assets/icons/icon-192x192.png">
+
+  <!-- スタイルシート -->
+  <link rel="stylesheet" href="/css/main.css">
+
+  <!-- フォント -->
+  <link rel="preload" href="/assets/fonts/NotoSansJP-Regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/assets/fonts/NotoSansJP-Bold.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/assets/fonts/Inter-Regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/assets/fonts/Inter-Bold.woff2" as="font" type="font/woff2" crossorigin>
+</head>
+
+<body>
+  <!-- アプリケーションのルート要素 -->
+  <div id="app">
+    <!-- ここにコンテンツが動的に挿入されます -->
+    <div class="loading">
+      <div class="loading-spinner"></div>
+      <p>読み込み中...</p>
+    </div>
+  </div>
+
+  <!-- オフライン通知 -->
+  <div id="offline-notification" class="offline-notification" style="display: none;">
+    <p>オフラインモードです。一部の機能が制限されています。</p>
+  </div>
+
+  <!-- メインスクリプト -->
+  <script type="module" src="/js/app.js"></script>
+
+  <!-- Service Worker登録 -->
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/service-worker.js')
+          .then(registration => {
+            console.log('Service Worker登録成功:', registration.scope);
+          })
+          .catch(error => {
+            console.error('Service Worker登録失敗:', error);
+          });
+      });
+
+      // オンライン/オフライン状態の監視
+      window.addEventListener('online', () => {
+        document.getElementById('offline-notification').style.display = 'none';
+        // バックグラウンド同期の登録
+        navigator.serviceWorker.ready.then(registration => {
+          registration.sync.register('sync-progress');
+        });
+      });
+
+      window.addEventListener('offline', () => {
+        document.getElementById('offline-notification').style.display = 'block';
+      });
+
+      // 初期状態の確認
+      if (!navigator.onLine) {
+        document.getElementById('offline-notification').style.display = 'block';
+      }
+    }
+  </script>
+</body>
+
+</html>

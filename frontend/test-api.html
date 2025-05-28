@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test API</title>
+</head>
+<body>
+    <h1>Test API Connection</h1>
+    <button id="testBtn">Test Login API</button>
+    <div id="result"></div>
+    
+    <script type="module">
+        import { ApiClient } from './src/js/api/api.js';
+        
+        document.getElementById('testBtn').addEventListener('click', async () => {
+            const client = new ApiClient();
+            
+            // Test baseUrl setting
+            console.log('1. Creating client...');
+            
+            const baseUrl = 'http://localhost:3001/api';
+            console.log('2. Setting baseUrl to:', baseUrl);
+            client.setBaseUrl(baseUrl);
+            
+            console.log('3. BaseUrl set to:', client.baseUrl);
+            
+            try {
+                console.log('4. Testing URL build...');
+                const url = client._buildUrl('/auth/login');
+                console.log('5. URL built:', url.toString());
+                
+                console.log('6. Testing API call...');
+                const response = await client.post('/auth/login', {
+                    email: 'test@example.com',
+                    password: 'Test123!'
+                });
+                
+                console.log('7. API response:', response);
+                document.getElementById('result').innerHTML = 
+                    '<h3>Success!</h3><pre>' + JSON.stringify(response, null, 2) + '</pre>';
+                    
+            } catch (error) {
+                console.error('Error:', error);
+                document.getElementById('result').innerHTML = 
+                    '<h3 style="color: red;">Error:</h3><pre>' + error.message + '</pre>';
+            }
+        });
+    </script>
+</body>
+</html>

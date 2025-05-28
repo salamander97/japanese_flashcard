@@ -1,0 +1,23 @@
+{
+  "name": "japanese-flashcard-app-frontend",
+  "version": "1.0.0",
+  "description": "日本語フラッシュカードアプリのフロントエンド",
+  "main": "index.js",
+  "scripts": {
+    "start": "http-server public -p 3000 -c-1 --cors",
+    "dev": "http-server public -p 3000 -c-1 --cors -o",
+    "build": "mkdir -p dist && cp -r public/* dist/ && cp -r src/* dist/"
+  },
+  "keywords": [
+    "japanese",
+    "flashcard",
+    "hiragana",
+    "katakana",
+    "learning"
+  ],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "http-server": "^14.1.1"
+  }
+}

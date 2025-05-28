@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test Register</title>
+</head>
+<body>
+    <h1>Test Registration</h1>
+    <form id="testForm">
+        <input type="text" id="username" placeholder="Username" value="testuser123"><br><br>
+        <input type="email" id="email" placeholder="Email" value="test@example.com"><br><br>
+        <input type="password" id="password" placeholder="Password" value="Test123!"><br><br>
+        <button type="submit">Register</button>
+    </form>
+    
+    <div id="result"></div>
+    
+    <script>
+    document.getElementById('testForm').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        
+        const data = {
+            username: document.getElementById('username').value,
+            email: document.getElementById('email').value,
+            password: document.getElementById('password').value
+        };
+        
+        console.log('Sending data:', data);
+        
+        try {
+            const response = await fetch('http://localhost:3001/api/auth/register', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data)
+            });
+            
+            const result = await response.json();
+            console.log('Response:', result);
+            
+            document.getElementById('result').innerHTML = 
+                '<h3>Response:</h3><pre>' + JSON.stringify(result, null, 2) + '</pre>';
+                
+        } catch (error) {
+            console.error('Error:', error);
+            document.getElementById('result').innerHTML = 
+                '<h3 style="color: red;">Error:</h3><pre>' + error.message + '</pre>';
+        }
+    });
+    </script>
+</body>
+</html>

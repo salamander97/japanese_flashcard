@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="オフラインページ - 日本語フラッシュカードアプリ">
+  <meta name="theme-color" content="#4F46E5">
+  
+  <title>オフライン - 日本語フラッシュカード</title>
+  
+  <style>
+    :root {
+      --color-primary-start: #4F46E5;
+      --color-primary-end: #7C3AED;
+      --color-accent: #F8BBD9;
+      --color-text: #333333;
+      --color-text-secondary: #666666;
+      --color-background: #ffffff;
+      --spacing-xs: 0.25rem;
+      --spacing-sm: 0.5rem;
+      --spacing-md: 1rem;
+      --spacing-lg: 2rem;
+      --spacing-xl: 4rem;
+      --border-radius: 0.5rem;
+    }
+    
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      color: var(--color-text);
+      background-color: var(--color-background);
+      line-height: 1.5;
+      padding: var(--spacing-md);
+    }
+    
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: var(--spacing-lg);
+      text-align: center;
+    }
+    
+    .card {
+      background-color: var(--color-background);
+      border-radius: var(--border-radius);
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      padding: var(--spacing-lg);
+      margin-top: var(--spacing-lg);
+    }
+    
+    h1 {
+      font-size: 2rem;
+      margin-bottom: var(--spacing-md);
+      color: var(--color-primary-start);
+    }
+    
+    p {
+      margin-bottom: var(--spacing-md);
+    }
+    
+    .btn {
+      display: inline-block;
+      padding: var(--spacing-sm) var(--spacing-md);
+      background: linear-gradient(135deg, var(--color-primary-start), var(--color-primary-end));
+      color: white;
+      border: none;
+      border-radius: var(--border-radius);
+      cursor: pointer;
+      text-decoration: none;
+      font-weight: bold;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+    
+    .mt-md {
+      margin-top: var(--spacing-md);
+    }
+    
+    .mt-lg {
+      margin-top: var(--spacing-lg);
+    }
+    
+    .offline-icon {
+      font-size: 4rem;
+      margin-bottom: var(--spacing-md);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="card">
+      <div class="offline-icon">📶</div>
+      <h1>オフラインです</h1>
+      <p>インターネット接続がありません。接続が回復したら自動的に同期されます。</p>
+      <p>一部のコンテンツはオフラインでも利用できます。</p>
+      
+      <div class="mt-lg">
+        <button class="btn" id="retry-btn">再接続を試みる</button>
+      </div>
+    </div>
+  </div>
+  
+  <script>
+    // 再接続ボタン
+    document.getElementById('retry-btn').addEventListener('click', () => {
+      window.location.reload();
+    });
+    
+    // オンラインに戻ったら自動的にリロード
+    window.addEventListener('online', () => {
+      window.location.reload();
+    });
+  </script>
+</body>
+</html>

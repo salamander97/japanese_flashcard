@@ -1,0 +1,15 @@
+{"level":"info","message":"🚀 Server đang chạy tại http://0.0.0.0:3001","service":"japanese-flashcard-api","timestamp":"2025-05-28 20:19:30"}
+{"level":"info","message":"📝 Environment: development","service":"japanese-flashcard-api","timestamp":"2025-05-28 20:19:30"}
+{"level":"info","message":"✅ Database connection đã được thiết lập thành công","service":"japanese-flashcard-api","timestamp":"2025-05-28 20:19:30"}
+{"level":"info","message":"🗄️  Database tables synced","service":"japanese-flashcard-api","timestamp":"2025-05-28 20:19:30"}
+{"level":"info","message":{"body":{},"duration":"5ms","ip":"127.0.0.1","method":"GET","status":200,"url":"/health","user":"anonymous"},"service":"japanese-flashcard-api","timestamp":"2025-05-28 20:35:20"}
+{"level":"info","message":{"body":{"email":"test@example.com","password":"********","username":"testuser"},"duration":"344ms","ip":"127.0.0.1","method":"POST","status":201,"url":"/api/auth/register","user":"anonymous"},"service":"japanese-flashcard-api","timestamp":"2025-05-28 20:35:36"}
+{"level":"info","message":{"body":{},"duration":"3ms","ip":"127.0.0.1","method":"GET","status":200,"url":"/api/test-db","user":"anonymous"},"service":"japanese-flashcard-api","timestamp":"2025-05-28 20:36:19"}
+{"level":"info","message":{"body":{"email":"test@example.com","password":"********","username":"testuser123"},"duration":"35ms","ip":"127.0.0.1","method":"POST","status":400,"url":"/api/auth/register","user":"anonymous"},"service":"japanese-flashcard-api","timestamp":"2025-05-28 20:36:58"}
+{"level":"info","message":"🚀 Server đang chạy tại http://0.0.0.0:3001","service":"japanese-flashcard-api","timestamp":"2025-05-28 20:44:24"}
+{"level":"info","message":"📝 Environment: development","service":"japanese-flashcard-api","timestamp":"2025-05-28 20:44:24"}
+{"level":"info","message":"✅ Database connection đã được thiết lập thành công","service":"japanese-flashcard-api","timestamp":"2025-05-28 20:44:24"}
+{"level":"info","message":"🗄️  Database tables synced","service":"japanese-flashcard-api","timestamp":"2025-05-28 20:44:24"}
+{"level":"info","message":{"body":{"email":"test@example.com","password":"********"},"duration":"333ms","ip":"127.0.0.1","method":"POST","status":200,"url":"/api/auth/login","user":"anonymous"},"service":"japanese-flashcard-api","timestamp":"2025-05-28 20:48:12"}
+{"level":"info","message":{"body":{"email":"test@example.com","password":"********"},"duration":"338ms","ip":"127.0.0.1","method":"POST","status":200,"url":"/api/auth/login","user":"anonymous"},"service":"japanese-flashcard-api","timestamp":"2025-05-28 20:48:39"}
+{"level":"info","message":{"body":{"email":"test@example.com","password":"********"},"duration":"443ms","ip":"127.0.0.1","method":"POST","status":200,"url":"/api/auth/login","user":"anonymous"},"service":"japanese-flashcard-api","timestamp":"2025-05-28 20:52:13"}
